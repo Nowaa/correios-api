@@ -6,10 +6,12 @@ async function get(req, res) {
 
     let numberList = [];
 
-    //trackingNumber = 'LB363051775SE';
     numberList.push(trackingNumber);
 
     await rastrearEncomendas(numberList).then((response) => {
+      if (response[0].length == 0) {
+        return res.status(500).json({ err: "Código não encontrado" });
+      }
       return res.json(response);
     });
   } catch (err) {
