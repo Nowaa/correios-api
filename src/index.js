@@ -7,6 +7,8 @@ app.use(cors());
 
 app.use("/tracking", require("./routes/trackingRoutes"));
 
-app.listen(3001, function () {
+var port = process.env.PORT || 3001;
+
+app.listen(port, function () {
   console.log("Live on port 3001");
 });
